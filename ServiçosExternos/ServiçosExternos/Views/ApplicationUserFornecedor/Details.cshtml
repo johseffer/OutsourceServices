@@ -1,0 +1,58 @@
+﻿@model ServiçosExternos.Models.Service
+
+@{
+    ViewBag.Title = "Serviços Externos - Detalhe de Ordem de Serviço";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div>
+        <h4>Detalhes de Ordem de Serviço</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cliente.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cliente.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Fornecedor.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fornecedor.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Value)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Value)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceType)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Voltar a lista", "Index")
+    </p>
+</div>

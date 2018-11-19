@@ -1,0 +1,66 @@
+﻿@model ServiçosExternos.Models.Service
+
+@{
+    ViewBag.Title = "Serviços Externos - Exclusão de orgem de Serviço";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <h2>Excluir Ordem de Serviço</h2>
+    <hr />
+    <h3>Deseja realmente excluir o item selecionado?</h3>
+    <div>       
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cliente.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cliente.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Fornecedor.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fornecedor.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Value)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Value)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceType)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Excluir" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar a lista", "Index")
+            </div>
+        }
+    </div>
+</div>

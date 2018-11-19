@@ -1,0 +1,107 @@
+﻿@model ServiçosExternos.Controllers.DashboardController.DashboardAux
+
+@{
+    ViewBag.Title = "Serviços Externos - Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-body">
+    <h2>Clientes com maiores gastos</h2>
+    <br />
+    <table class="table">
+        <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+               Mês
+            </th>
+            <th class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+               Cliente
+            </th>
+            <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Total
+            </th>
+        </tr>
+
+        @foreach (var item in Model.ListaTop3ClientesPorMes)
+        {
+            <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <td rowspan="@Model.ListaTop3ClientesPorMes.Where(x=>x.Mes == item.Mes).ToList().Count.ToString()" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    @Html.DisplayFor(modelItem => item.NomeMes)
+                </td>
+                <td class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @Html.DisplayFor(modelItem => item.Cliente)
+                </td>
+                <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>                             
+            </tr>
+        }
+
+    </table>
+    <br />
+    <hr />
+    <br />
+    <h2>Preço médio Fornecedores por Serviço</h2>
+    <br />
+    <table class="table">
+        <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Fornecedor
+            </th>
+            <th class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                Serviço
+            </th>
+            <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Valor Médio
+            </th>
+        </tr>
+
+        @foreach (var item in Model.ListaValoresMediosFornecedores)
+        {
+            <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <td  class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    @Html.DisplayFor(modelItem => item.Fornecedor)
+                </td>
+                <td class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    @Html.DisplayFor(modelItem => item.Average)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+    <hr />
+    <br />
+
+    <h2>Fornecedores Inativos por Mês</h2>
+    <br />
+    <table class="table">
+        <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Mês
+            </th>
+            <th class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                Fornecedor
+            </th>            
+        </tr>
+
+        @foreach (var item in Model.ListaFornecedoresInativos)
+        {
+            <tr class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <td rowspan="@Model.ListaTop3ClientesPorMes.Where(x=>x.Mes == item.Mes).ToList().Count.ToString()" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    @Html.DisplayFor(modelItem => item.NomeMes)
+                </td>
+                <td class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    @Html.DisplayFor(modelItem => item.Fornecedor)
+                </td>
+              
+            </tr>
+        }
+
+    </table>
+
+</div>

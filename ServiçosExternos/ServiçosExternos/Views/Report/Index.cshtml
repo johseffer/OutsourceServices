@@ -1,0 +1,115 @@
+﻿@model ServiçosExternos.Controllers.ReportController.ServiceAux
+
+@{
+    ViewBag.Title = "Serviços Externos - Busca de Serviços";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+{
+    <script type="text/javascript">
+    $(document).ready(function () {
+     $("#btnSend").click(function (e) {
+         e.preventDefault();
+         
+         var model = {
+             Cliente: {
+                 Name: $("#vleClienteName").val()
+             },
+             Bairro: $("#vleBairro").val(),
+             Cidade: $("#vleCidade").val(),
+             Estado: $("#vleEstado").val(),
+             Service: $("#vleService").val(),
+             ValorMin: $("#vleValorMin").val(),
+             ValorMax: $("#vleValorMax").val()
+         };
+
+         var url = "@Url.Action("GetReport", "Report")";
+         $.ajax({
+             type: "POST",
+             data: JSON.stringify(model),
+             url: url,
+             contentType: "application/json"
+         }).done(function (res) {
+             if (res) 
+                 window.location.href = "Report/ReportView";
+             
+         });
+        });
+    });
+
+    </script>
+}
+<div class="page-body">
+    <h2>Busca de Serviços por Período</h2>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-inline">
+            <div style="padding-left:30px;">
+                <h4>Filtros</h4>
+            </div>
+            <hr />
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.Cliente.Name, new { htmlAttributes = new { @id = "vleClienteName", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.Cliente.Bairro, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.Cliente.Bairro, new { htmlAttributes = new { @id = "vleBairro", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.Cliente.Cidade, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.Cliente.Cidade, new { htmlAttributes = new { @id = "vleCidade", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.Cliente.Estado, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.Cliente.Estado, new { htmlAttributes = new { @id = "vleEstado", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+            </div>
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.Service, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.Service, new { htmlAttributes = new { @id = "vleService", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.ValorMin, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.ValorMin, new { htmlAttributes = new { @id = "vleValorMin", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelFor(model => model.ValorMax, htmlAttributes: new { @class = "control-label filter-label col-md-2" })
+                        @Html.EditorFor(model => model.ValorMax, new { htmlAttributes = new { @id = "vleValorMax", @class = "form-control col-xs-12 col-sm-12 col-md-12 col-lg-12", style = "width:100%;" } })
+                    </div>
+                </div>
+
+            </div>
+            <br />
+
+            <div align="right" class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-md-offset-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <br />
+                    <input type="submit" value="Imprimir" id="btnSend" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model List<ServiçosExternos.Models.Service>
+
+@{
+    ViewBag.Title = "Serviços Externos - Relatório de Serviços";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <h2>Relatório de Serviços</h2>
+    <table class="table">
+        <tr>
+            <th align="left" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                Cliente
+            </th>
+            <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                Serviço
+            </th>
+            <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Valor
+            </th>
+            <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Data
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="center" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    @Html.DisplayFor(modelItem => item.Cliente.Name)
+                </td>
+                <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    @Html.DisplayFor(modelItem => item.ServiceType)
+                </td>
+                <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+            }
+
+        </table>
+    <p>@Html.ActionLink("Voltar a Busca","Index", "Report")</p>
+    </div>

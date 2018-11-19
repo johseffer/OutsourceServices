@@ -1,0 +1,52 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    background-color: white;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.login-link {
+    color: white !important;
+}
+
+.logoff-link {
+    color: lightgray !important;
+}
+
+.page-body {
+    padding-top: 50px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+footer {
+    background-color: #343A40;
+}
+
+.btn {
+    margin-right: 20px;
+}
+
+.filter-label{
+    padding-right:0px !important;
+    margin-top:10px;
+}
